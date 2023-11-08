@@ -46,43 +46,69 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+1.Set the input as clock.
+2.Register the output of 4 bit.
+3.Use Posedge on the input clock.
+4.For Up counter use AND and OR gates to declare the value of each bit.
+5.For Down counter use AND, OR and NOT gates to declare the value of each bit.
+6.End the module
 
 
 
 ### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
-
+Developed by: Sabari S
+Register Number: 212222240085
+Program for Up-counter:
+module uc(clk,A);
+input clk;
+output reg [3:0]A;
+always@(posedge clk)
+begin
+A[3]=((A[2]&A[1])&A[0])^A[3];
+A[2]=(A[1]&A[0])^A[2];
+A[1]=(A[0]^A[1]);
+A[0]=1^A[0];
+end
+endmodule
+Program for down counter:
+module dc(clk,A);
+input clk;
+output reg [3:0]A;
+always @(posedge clk)
+begin
+A[3]=((~A[2])&(~A[1])&(~A[0]))^A[3];
+A[2]=((~A[1])&(~A[0]))^A[2];
+A[1]=(~A[0])^A[1];
+A[0]=1^A[0];
+end
+endmodule
+```
 
 
 
 
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+## UP COUNTER:
+![image](https://github.com/SABARI005/Exp-7-Synchornous-counters-/assets/118660461/44a38a1c-0e1e-49fb-8000-afb16b4ee0de)
 
-
-
-
-
-
-
+## DOWN COUNTER:
+![image](https://github.com/SABARI005/Exp-7-Synchornous-counters-/assets/118660461/f08d7459-0a2c-4aa7-b4ae-fb0414c59ee0)
 
 
 ### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
+## UP COUNTER
+![image](https://github.com/SABARI005/Exp-7-Synchornous-counters-/assets/118660461/b292e25d-3bd7-433e-9d4a-38732dc3534c)
+## DOWN COUNTER
+![image](https://github.com/SABARI005/Exp-7-Synchornous-counters-/assets/118660461/3eaeb080-f5eb-43b1-94ad-dd983470696b)
 
 ### TRUTH TABLE 
-
-
-
-
-
+## UP COUNTER
+![image](https://github.com/SABARI005/Exp-7-Synchornous-counters-/assets/118660461/c8db3a4a-7eab-480d-b7ab-b4112431b435)
+## DOWN COUNTER
+![image](https://github.com/SABARI005/Exp-7-Synchornous-counters-/assets/118660461/b5186bb4-aec0-4137-9384-d723eb6a5d66)
 
 ### RESULTS 
+Thus Synchornous counters up counter and down counter circuit are studied and the truth table for different logic gates are verified.
